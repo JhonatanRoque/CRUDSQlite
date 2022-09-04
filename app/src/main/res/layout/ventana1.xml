@@ -60,7 +60,7 @@
         android:orientation="vertical"
         >
         <TextView
-            android:id="@+id/edt_close"
+            android:id="@+id/tv_close"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
