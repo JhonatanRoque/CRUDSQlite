@@ -1,9 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> origin/main
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".Activity_consulta_spinner">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+    android:orientation="vertical"
+    android:background="#C5C5C5"
+    tools:context=".Activity_consulta_spinner">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccione una opcion"
+        android:layout_marginTop="25dp"
+        android:textAlignment="gravity"
+        android:textSize="18dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textColor="#AD0505"
+        android:fontFamily="cursive"
+        />
+
+    <Spinner
+        android:id="@+id/sp_options"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:drawSelectorOnTop="true"
+        android:spinnerMode="dropdown"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background=""
+        android:paddingLeft="15dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:id="@+id/tv_cod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Codigo:"
+            android:textColor="#AD0505"
+            android:textSize="18dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripcion:"
+            android:textColor="#AD0505"
+            android:textSize="18dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_precio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Precio:"
+            android:textColor="#AD0505"
+            android:textSize="18dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="50dp"
+            />
+
+    </RelativeLayout>
+</LinearLayout>
+>>>>>>> origin/main
