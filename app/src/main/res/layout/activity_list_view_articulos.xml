@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-=======
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> origin/main
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity_list_view_articulos">
-<<<<<<< HEAD
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-=======
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -31,7 +23,6 @@
         android:textStyle="bold"
         android:textColor="#000"
         android:paddingTop="5dp"
-        android:textAppearance=""
         />
 
     <SearchView
@@ -77,4 +68,3 @@
         />
 
 </RelativeLayout>
->>>>>>> origin/main
