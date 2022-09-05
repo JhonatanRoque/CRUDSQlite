@@ -27,10 +27,10 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="167dp"
-                android:src="@drawable/computadora"
+                android:src="@drawable/pngegg"
                 android:layout_margin="10dp"/>
             <EditText
-                android:id="@+id/edtCodigo"
+                android:id="@+id/et_codigo"
                 android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
