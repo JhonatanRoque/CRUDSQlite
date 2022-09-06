@@ -19,7 +19,7 @@
         android:textSize="20dp" />
 
     <EditText
-        android:id="@+id/edt_Cod"
+        android:id="@+id/et_cod"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
@@ -33,7 +33,7 @@
         android:paddingLeft="25dp"
         />
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_Buscar"
+        android:id="@+id/btn_buscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/buttonshape"

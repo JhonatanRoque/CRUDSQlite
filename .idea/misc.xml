@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
 <<<<<<< HEAD
+        <entry key="..\:/Users/Wilson/Desktop/CRUDSQL/CRUDSQlite/app/src/main/res/drawable/delete.xml" value="0.1105" />
+=======
+<<<<<<< HEAD
 =======
         <entry key="..\:/Users/HP/AndroidStudioProjects/CRUDSQlite-master/app/src/main/res/layout/activity_consulta_spinner.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/CRUDSQlite-master/app/src/main/res/layout/activity_detalles_articulos.xml" value="0.23489583333333333" />
@@ -11,6 +14,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/CRUDSQlite-master/app/src/main/res/layout/fragment_second.xml" value="0.23489583333333333" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/CRUDSQlite-master/app/src/main/res/layout/ventana1.xml" value="0.23489583333333333" />
 >>>>>>> origin/main
+>>>>>>> 4c06cb2b1527f52e5cdf56b02f14813d6acbe0b9
         <entry key="..\:/Users/franc/AndroidStudioProjects/App_CRUDSQLite/app/src/main/res/drawable/buttonshape.xml" value="0.1575" />
         <entry key="..\:/Users/franc/AndroidStudioProjects/App_CRUDSQLite/app/src/main/res/drawable/circulo1.xml" value="0.119" />
         <entry key="..\:/Users/franc/AndroidStudioProjects/App_CRUDSQLite/app/src/main/res/drawable/estiloText.xml" value="0.1" />

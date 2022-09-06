@@ -30,8 +30,8 @@ public class Modal {
         myDialog.setTitle("Busqueda");
         myDialog.setCancelable(false);
         final ConexionSQLite conexion = new ConexionSQLite(context);
-        final EditText et_cod = (EditText) myDialog.findViewById(R.id.edt_Cod);
-        Button btn_buscar = (Button) myDialog.findViewById(R.id.btn_Buscar);
+        final EditText et_cod = (EditText) myDialog.findViewById(R.id.et_cod);
+        Button btn_buscar = (Button) myDialog.findViewById(R.id.btn_buscar);
         TextView tv_Close = (TextView) myDialog.findViewById(R.id.tv_close);
         tv_Close.setOnClickListener(new View.OnClickListener() {
             @Override

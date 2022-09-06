@@ -30,7 +30,7 @@
         android:spinnerMode="dropdown"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background=""
+        android:background="@drawable/estiloespinner"
         android:paddingLeft="15dp"/>
 
     <RelativeLayout
