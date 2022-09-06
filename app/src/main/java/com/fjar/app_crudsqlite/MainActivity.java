@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event){
         if(keyCode==KeyEvent.KEYCODE_BACK) {
             new android.app.AlertDialog.Builder(this)
-                    .setIcon(R.drawable.delete)
+                    .setIcon(R.drawable.ic_delete)
                     .setTitle("Warning")
                     .setMessage("Realmente deseas salir")
                     .setNegativeButton(android.R.string.cancel, null)
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         String mensaje = "¿Realmente desea salir?";
 
         dialogo = new AlertDialog.Builder(MainActivity.this);
-        dialogo.setIcon(R.drawable.delete);
+        dialogo.setIcon(R.drawable.ic_delete);
         dialogo.setTitle("Warning");
         dialogo.setMessage(mensaje);
         dialogo.setCancelable(false);

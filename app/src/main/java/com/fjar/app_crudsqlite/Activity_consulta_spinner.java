@@ -28,7 +28,7 @@ public class Activity_consulta_spinner extends AppCompatActivity {
         tv_descripcion = (TextView)findViewById(R.id.tv_descripcion);
         tv_precio = (TextView)findViewById(R.id.tv_precio);
 
-        conexion.consultaListaArticulo();
+        conexion.consultaListaArticulos();
 
         ArrayAdapter<CharSequence> adaptador = new ArrayAdapter(this, android.R.layout.simple_spinner_item,
                 conexion.obtenerListaArticulos());

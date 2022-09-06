@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class ConexionSQLite extends SQLiteOpenHelper {
 
@@ -23,7 +22,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
 
     ArrayList<Dto>articulosList;
 
-    public ConexionSQLite(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public ConexionSQLite(@Nullable Context context) {
         super(context, name, factory, version);
     }
     /*
