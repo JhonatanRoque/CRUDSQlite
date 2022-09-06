@@ -13,7 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_CRUDSQLite"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Activity_detalles_articulos"
+            android:exported="false" />
+        <activity
+            android:name=".Activity_list_view_articulos"
+            android:exported="false" />
+        <activity
+            android:name=".Activity_consulta_spinner"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
