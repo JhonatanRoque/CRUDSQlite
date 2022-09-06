@@ -130,7 +130,7 @@
                 android:paddingLeft="5dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginLeft="15dp"
-                android:drawableLeft="@drawable/delete"
+                android:drawableLeft="@drawable/ic_delete"
                 android:text="BORRAR"
                 />
 
