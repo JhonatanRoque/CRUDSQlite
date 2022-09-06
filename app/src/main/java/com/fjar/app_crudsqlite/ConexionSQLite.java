@@ -22,12 +22,9 @@ public class ConexionSQLite extends SQLiteOpenHelper {
 
     ArrayList<Dto>articulosList;
 
-    public ConexionSQLite(@Nullable Context context) {
-        super(context, name, factory, version);
-    }
-    /*
+
     public ConexionSQLite(Context context) {super(context, "administracion.db", null, 1);
-    }  */
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
