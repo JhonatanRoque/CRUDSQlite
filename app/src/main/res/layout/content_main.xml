@@ -9,10 +9,11 @@
     >
 
    <TextView
+       android:id="@+id/tv"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:textAlignment="center"
-       android:text="Datos del proucto"
+       android:text="DATOS DEL ARTICULO"
        android:textSize="30dp"
        />
     <ScrollView
@@ -41,7 +42,7 @@
                 />
 
             <EditText
-                android:id="@+id/edtDesc"
+                android:id="@+id/et_descripcion"
                 android:layout_width="match_parent"
                 android:layout_height="101dp"
                 android:layout_gravity="center"
@@ -50,7 +51,7 @@
                 android:drawableStart="@drawable/edit"
                 android:inputType="textMultiLine" />
             <EditText
-                android:id="@+id/edtPrecio"
+                android:id="@+id/et_precio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ingrese el precio del artículo"
@@ -59,12 +60,12 @@
                 android:layout_margin="5dp"
                 />
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnGuardar"
+                android:id="@+id/btn_guardar"
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttonshape"
-
+                android:onClick="alta"
                 android:shadowColor="#A8A8A8"
                 android:shadowDx="-5"
                 android:shadowDy="-5"
@@ -80,11 +81,11 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnBuscarCod"
+                android:id="@+id/btn_consultar1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttonshape"
-
+                android:onClick="consultaporcodigo"
                 android:shadowColor="#A8A8A8"
                 android:shadowDx="-5"
                 android:shadowDy="-5"
@@ -98,11 +99,11 @@
                 android:drawableLeft="@drawable/ic_baseline_search_24"
                 />
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnbuscarDesc"
+                android:id="@+id/btn_consultar2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttonshape"
-
+                android:onClick="consultapordescripcion"
                 android:shadowColor="#A8A8A8"
                 android:shadowDx="-5"
                 android:shadowDy="-5"
@@ -116,11 +117,11 @@
                 android:text="CONSULTAR POR DESCRIPCIÓN"
                 />
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnEliminar"
+                android:id="@+id/btn_eliminar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttonshape"
-
+                android:onClick="bajaporcodigo"
                 android:shadowColor="#A8A8A8"
                 android:shadowDx="-5"
                 android:shadowDy="-5"
@@ -135,11 +136,11 @@
                 />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnModificar"
+                android:id="@+id/btn_actualizar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/buttonshape"
-
+                android:onClick="modificacion"
                 android:shadowColor="#A8A8A8"
                 android:shadowDx="-5"
                 android:shadowDy="-5"
