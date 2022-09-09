@@ -17,10 +17,5 @@
         android:orderInCategory="100"
         android:title="@string/ListView"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/copiaDB"
-        android:orderInCategory="100"
-        android:title="@string/copia"
-        app:showAsAction="never" />
 
 </menu>
