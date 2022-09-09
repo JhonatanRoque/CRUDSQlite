@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
 
         int permissionCheck1 = ContextCompat.checkSelfPermission(
                 this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        Toast.makeText(this, "Estado" + permissionCheck1, Toast.LENGTH_SHORT).show();
         if (permissionCheck1 != PackageManager.PERMISSION_GRANTED) {
             Log.i("Mensaje", "No se tiene permiso para leer.");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 225);
@@ -148,10 +147,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent=getIntent();
             Bundle bundle=intent.getExtras();
             if(bundle !=null){
-                senal = bundle.getString("senal");
+                senal = bundle.getString("flag");
                 codigo = bundle.getString("codigo");
                 if (senal != ""){
-                    Toast.makeText(this, "El dato es" + senal, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "El dato es" + senal + codigo, Toast.LENGTH_SHORT).show();
                 }
                 descripcion = bundle.getString("descripcion");
                 precio = bundle.getString("precio");

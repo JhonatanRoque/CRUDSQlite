@@ -16,6 +16,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="25dp"
         android:text="Busqueda por Código"
+        android:textColor="@color/black"
         android:textSize="20dp" />
 
     <EditText
@@ -29,6 +30,8 @@
         android:drawableStart="@drawable/key"
         android:drawablePadding="5dp"
         android:hint="Ingrese el código"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
         android:inputType="number"
         android:paddingLeft="25dp"
         />

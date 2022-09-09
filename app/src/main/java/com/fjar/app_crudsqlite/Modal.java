@@ -65,7 +65,7 @@ public class Modal {
                         precio = String.valueOf(datos.getPrecio());
                         String action;
                         Intent intent = new Intent(context, MainActivity.class);
-                        intent.putExtra("senal", 1);
+                        intent.putExtra("flag", "1");
                         intent.putExtra("codigo", codigo);
                         intent.putExtra("descripcion", descripcion);
                         intent.putExtra("precio", precio);
