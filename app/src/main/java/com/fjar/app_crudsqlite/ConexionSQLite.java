@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+
 import java.util.ArrayList;
 
 public class ConexionSQLite extends SQLiteOpenHelper {
@@ -141,8 +142,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         try {
             int codigo = datos.getCodigo();
 
-            Cursor fila = db.rawQuery("select codigo, descripcion, precio from articulos" +
-                    "where codigo=" + codigo, null);
+            Cursor fila = db.rawQuery("select codigo, descripcion, precio from articulos where codigo = " + codigo, null);
             if(fila.moveToFirst()){
                 datos.setCodigo(Integer.parseInt(fila.getString(0)));
                 datos.setDescripcion(fila.getString(1));
@@ -191,8 +191,8 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         try{
             String descripcion = datos.getDescripcion();
-            Cursor fila = db.rawQuery("select codigo, descripcion, precio from articulos" +
-                    "where descripcion='" + descripcion + "'", null);
+            Cursor fila = db.rawQuery("select codigo, descripcion, precio from articulos where descripcion = '" + descripcion + "'", null);
+
             if(fila.moveToFirst()){
                 datos.setCodigo(Integer.parseInt(fila.getString(0)));
                 datos.setDescripcion(fila.getString(1));
@@ -231,7 +231,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         int codigo = datos.getCodigo();
-                        int cant = db().delete("articulo","codigo=" + codigo, null);
+                        int cant = db().delete("articulos","codigo = " + codigo, null);
 
                         if(cant > 0){
                             estadoDelete = true;

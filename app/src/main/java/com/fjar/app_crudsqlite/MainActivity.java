@@ -1,7 +1,10 @@
 package com.fjar.app_crudsqlite;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -10,9 +13,14 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Environment;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -29,6 +37,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -73,13 +85,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        int permissionCheck1 = ContextCompat.checkSelfPermission(
+                this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        Toast.makeText(this, "Estado" + permissionCheck1, Toast.LENGTH_SHORT).show();
+        if (permissionCheck1 != PackageManager.PERMISSION_GRANTED) {
+            Log.i("Mensaje", "No se tiene permiso para leer.");
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 225);
+            try {
+                Uri uri = Uri.parse("package:" + BuildConfig.APPLICATION_ID);
+                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, uri);
+                startActivity(intent);}
+            catch (Exception ex){
+               Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                startActivity(intent);
+            }
+
+
+
+        } else {
+            Log.i("Mensaje", "Se tiene permiso para leer y escribir!");
+        }
         Toolbar toolbar =findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.attributes));
         toolbar.setTitleTextColor(getResources().getColor(R.color.purple_700));
         toolbar.setTitleMargin(0,0,0,0);
-        toolbar.setSubtitle("CRUD SQLite-2019");
+        toolbar.setSubtitle("CRUD SQLite-2022");
         toolbar.setSubtitleTextColor(getResources().getColor(R.color.teal_200));
-        toolbar.setTitle("Prof.Gámez");
+        toolbar.setTitle("SIS 21B");
         setSupportActionBar(toolbar);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -115,8 +148,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent=getIntent();
             Bundle bundle=intent.getExtras();
             if(bundle !=null){
-                codigo = bundle.getString("codigo");
                 senal = bundle.getString("senal");
+                codigo = bundle.getString("codigo");
+                if (senal != ""){
+                    Toast.makeText(this, "El dato es" + senal, Toast.LENGTH_SHORT).show();
+                }
                 descripcion = bundle.getString("descripcion");
                 precio = bundle.getString("precio");
                 if(senal.equals("1")){
@@ -167,16 +203,16 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_limpiar) {
+        if (id == R.id.Limpiar) {
             et_codigo.setText(null);
             et_descripcion.setText(null);
             et_precio.setText(null);
             return true;
-        }else if(id==R.id.action_listaArticulos){
+        }else if(id==R.id.listaArticulos){
             Intent spinnerActivity = new Intent(MainActivity.this, Activity_consulta_spinner.class);
             startActivity(spinnerActivity);
             return true;
-        }else if(id==R.id.action_listaArticulos1){
+        }else if(id==R.id.listaArticulos1){
             Intent listViewActivity = new Intent(MainActivity.this, Activity_list_view_articulos.class);
             startActivity(listViewActivity);
             return true;
@@ -184,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     public void alta (View v){
     if(et_codigo.getText().toString().length()==0){
         et_codigo.setError("Campo Obligatorio");
@@ -263,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if(inputEd){
             String descripcion = et_descripcion.getText().toString();
-            datos.setCodigo(Integer.parseInt(descripcion));
+            datos.setDescripcion(descripcion);
             if(conexion.consultarDescripcion(datos)){
                 et_codigo.setText(""+datos.getCodigo());
                 et_descripcion.setText(datos.getDescripcion());
@@ -319,5 +356,62 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    public void CopiaBD(View v){
+        try{
+            final String inFileName = "/data/data/com.fjar.app_crudsqlite/databases/administracion.db";
+
+
+            File dbFile = new File(inFileName);
+            if(dbFile.exists()){
+                Toast.makeText(this, "Existe la base de datos", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "No existe la base de datos", Toast.LENGTH_SHORT).show();
+            }
+            FileInputStream fis = new FileInputStream(dbFile);
+            File directorio = new File(Environment.getExternalStorageDirectory() + "/CopiasDB");
+            if(!directorio.exists()) {
+                if (directorio.mkdirs()) {
+                    Toast.makeText(this, "Se creo el directorio", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "No se creo el directorio", Toast.LENGTH_SHORT).show();
+                }
+            }else {
+                Toast.makeText(this, "Ya existe el direcotorio", Toast.LENGTH_SHORT).show();
+            }
+            String outFileName = Environment.getExternalStorageDirectory() + "/CopiasDB/administra_copy.db";
+            File files = new File(outFileName);
+            if(!files.exists()){
+                files.createNewFile();
+                if(files.exists()){
+                    Toast.makeText(this, "El archivo copia existe", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this, "Ocurrio un error", Toast.LENGTH_SHORT).show();
+                }
+
+            }else {
+                Toast.makeText(this, "Exste la base de datos ", Toast.LENGTH_SHORT).show();
+            }
+            // Open the empty db as the output stream
+            FileOutputStream output = new FileOutputStream(outFileName);
+
+            // Transfer bytes from the inputfile to the outputfile
+            byte[] buffer = new byte[(int) dbFile.length()];
+
+            int length;
+            while ((length = fis.read(buffer))>0){
+                output.write(buffer, 0, length);
+            }
+            // Close the streams
+            output.flush();
+            output.close();
+            fis.close();
+
+
+        }catch(Exception e){
+            Log.e("error", e.toString());
+        }
+
     }
 }

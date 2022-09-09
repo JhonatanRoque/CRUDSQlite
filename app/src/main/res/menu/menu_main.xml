@@ -3,8 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.fjar.app_crudsqlite.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/Limpiar"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/itemLimpiar"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/listaArticulos"
+        android:orderInCategory="100"
+        android:title="@string/Spinner"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/listaArticulos1"
+        android:orderInCategory="100"
+        android:title="@string/ListView"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/copiaDB"
+        android:orderInCategory="100"
+        android:title="@string/copia"
+        app:showAsAction="never" />
+
 </menu>

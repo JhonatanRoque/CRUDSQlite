@@ -154,6 +154,24 @@
                 android:text="Modificar"
                 />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_Copiar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/buttonshape"
+                android:drawableLeft="@drawable/file_copy"
+                android:onClick="CopiaBD"
+                android:paddingLeft="5dp"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="-5"
+                android:shadowDy="-5"
+                android:shadowRadius="5"
+                android:text="Copia de seguridad"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp" />
+
 
 
         </LinearLayout>

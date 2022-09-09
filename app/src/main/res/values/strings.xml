@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">App_CRUDSQLite</string>
     <string name="action_settings">Settings</string>
+    <string name="itemLimpiar">Limpiar registro</string>
+    <string name="ListView">Ver registros en tabla</string>
+    <string name="copia">Copia de seguridad</string>
+    <string name="Spinner">Spinner</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

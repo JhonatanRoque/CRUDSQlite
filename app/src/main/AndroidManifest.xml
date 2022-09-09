@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.fjar.app_crudsqlite">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE " />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -12,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App_CRUDSQLite"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:preserveLegacyExternalStorage="true"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name=".Activity_detalles_articulos"
             android:exported="false" />

@@ -22,14 +22,14 @@ public class Modal {
     private String precio;
 
     private SQLiteDatabase db = null;
-    private Dto datos = new Dto();
+    private Dto datos = null;
 
     public void search(final Context context){
         myDialog = new Dialog(context);
         myDialog.setContentView(R.layout.ventana1);
         myDialog.setTitle("Busqueda");
         myDialog.setCancelable(false);
-        final ConexionSQLite conexion = new ConexionSQLite(context);
+        ConexionSQLite conexion = new ConexionSQLite(context);
         final EditText et_cod = (EditText) myDialog.findViewById(R.id.et_cod);
         Button btn_buscar = (Button) myDialog.findViewById(R.id.btn_buscar);
         TextView tv_Close = (TextView) myDialog.findViewById(R.id.tv_close);
@@ -56,6 +56,7 @@ public class Modal {
                     //int cod = Integer.parseInt(et_cod.getText().toString());
                     //datos.setCodigo(cod);
                     String cod = et_cod.getText().toString();
+                    datos = new Dto();
                     datos.setCodigo(Integer.parseInt(cod));
                     if(conexion.consultaCodigo(datos)){
 
@@ -78,7 +79,7 @@ public class Modal {
                 }
             }
         });
-        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT);
+        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         myDialog.show();
     }
 
