@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ConexionSQLite extends SQLiteOpenHelper {
 
@@ -356,5 +357,18 @@ public class ConexionSQLite extends SQLiteOpenHelper {
 
         }
         return listaArticulos;
+    }
+
+    public List<Dto> mostrarArticulos() {
+        SQLiteDatabase bd = this.getReadableDatabase();
+        Cursor cursor = bd.rawQuery("SELECT * FROM articulos order by codigo desc", null);
+        List<Dto> articulos = new ArrayList<>();
+        if(cursor.moveToFirst()){
+            do{
+                articulos.add(new Dto(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2)));
+            }while (cursor.moveToNext());
+        }
+        return articulos;
+
     }
 }
