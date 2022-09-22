@@ -17,5 +17,10 @@
         android:orderInCategory="100"
         android:title="@string/ListView"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/listRecyclerView"
+        android:orderInCategory="100"
+        android:title="RecyclerView"
+        app:showAsAction="never" />
 
 </menu>

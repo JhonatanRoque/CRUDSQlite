@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".Recycler_View">
+    tools:context=".consulta_recyclerview">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp"
+        tools:listitem="@layout/list_recyclerview"
         />
 </LinearLayout>

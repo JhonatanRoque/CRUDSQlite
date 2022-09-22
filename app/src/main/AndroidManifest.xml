@@ -25,7 +25,13 @@
             android:name=".Activity_list_view_articulos"
             android:exported="false" />
         <activity
+            android:name=".consulta_recyclerview"
+            android:exported="false" />
+        <activity
             android:name=".Activity_consulta_spinner"
+            android:exported="false" />
+        <activity
+            android:name=".Recycler_View"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

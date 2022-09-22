@@ -215,6 +215,10 @@ public class MainActivity extends AppCompatActivity {
             Intent listViewActivity = new Intent(MainActivity.this, Activity_list_view_articulos.class);
             startActivity(listViewActivity);
             return true;
+        }else if(id==R.id.listRecyclerView){
+            Intent listViewActivity = new Intent(MainActivity.this, Recycler_View.class);
+            startActivity(listViewActivity);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
