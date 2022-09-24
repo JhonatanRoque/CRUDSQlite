@@ -30,12 +30,23 @@ public class ConexionSQLite extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-    db.execSQL("Create table articulos(codigo integer not null primary key, descripcion text, precio real)");
+        db.execSQL("Create table categorias (idCategoria integer not null primary key, nameCategoria text not null, estadoCategoria integer not null, fechaRegistro datetime not null)");
+        db.execSQL("Create table articulos(codigo integer not null primary key, descripcion text, precio real, idCategoria integer, foreign key (idCategoria) References categorias (idCategoria))");
+
+        db.execSQL("insert into categoria values(1, 'Electrodomesticos', 1, datetime('now','localtime'))");
+        db.execSQL("insert into categoria values(2, 'Muebles', 1, datetime('now','localtime'))");
+        db.execSQL("insert into categoria values(3, 'Celulares', 1, datetime('now','localtime'))");
+        db.execSQL("insert into categoria values(4, 'Computadoras', 1, datetime('now','localtime'))");
+        db.execSQL("insert into categoria values(5, 'Lamparas', 1, datetime('now','localtime'))");
+        db.execSQL("insert into categoria values(6, 'Audio', 1, datetime('now','localtime'))");
+        db.execSQL("insert into categoria values(7, 'Monitores', 1, datetime('now','localtime'))");
+        db.execSQL("insert into categoria values(8, 'Laptops', 1, datetime('now','localtime'))");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists articulos");
+        db.execSQL("drop table if exists categoria");
         onCreate(db);
     }
 
@@ -366,6 +377,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         if(cursor.moveToFirst()){
             do{
                 articulos.add(new Dto(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2)));
+                Log.e("articulo",articulos.toString() );
             }while (cursor.moveToNext());
         }
         return articulos;
