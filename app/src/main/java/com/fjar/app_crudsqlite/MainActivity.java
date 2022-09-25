@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_guardar, btn_consultar1, btn_consultar2, btn_eliminar, btn_actualizar;
     private TextView tv_resultado;
     private Spinner spn;
+    private DtoCategoria cat;
 
     boolean inputEt=false;
     boolean inputEd=false;
@@ -142,25 +143,25 @@ public class MainActivity extends AppCompatActivity {
         btn_eliminar=(Button) findViewById(R.id.btn_eliminar);
         btn_actualizar=(Button) findViewById(R.id.btn_actualizar);
         spn = (Spinner) findViewById(R.id.spnCategoria);
+        cat = new DtoCategoria();
 
-        /*
+        conexion.consultaCategoria();
+
         ArrayAdapter<CharSequence> adaptador = new ArrayAdapter(this, android.R.layout.simple_spinner_item,
                 conexion.obtenerCategorias());
         spn.setAdapter(adaptador);
-        */
 
-        /*
+
+
         spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 if(position!=0){
-                    tv_cod.setText("Código: "+conexion.consultaListaArticulos().get(position-1).getCodigo());
-                    tv_descripcion.setText("Descripción: "+conexion.consultaListaArticulos().get(position-1).getDescripcion());
-                    tv_cod.setText("Precio: "+String.valueOf(conexion.consultaListaArticulos().get(position-1).getPrecio()));
+
+                    cat.setIdCategoria(conexion.consultaCategoria().get(position - 1).getIdCategoria());
+
                 }else{
-                    tv_cod.setText("Código: ");
-                    tv_descripcion.setText("Descripcion: ");
-                    tv_precio.setText("Precio: ");
+
                 }
             }
 
@@ -170,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-         */
+
 
         String senal = "";
         String codigo = "";
@@ -281,6 +282,7 @@ public class MainActivity extends AppCompatActivity {
                    datos.setCodigo(Integer.parseInt(et_codigo.getText().toString()));
                    datos.setDescripcion(et_descripcion.getText().toString());
                    datos.setPrecio(Double.parseDouble(et_precio.getText().toString()));
+                   datos.setIdCategoria(cat.getIdCategoria()); //Se agrego este campo para el registro de idcategoria
                    if(conexion.InsertarTradicional(datos)){
                        Toast.makeText(this, "Registro agregado satisfactoriamente!", Toast.LENGTH_SHORT).show();
                        limpiarDatos();

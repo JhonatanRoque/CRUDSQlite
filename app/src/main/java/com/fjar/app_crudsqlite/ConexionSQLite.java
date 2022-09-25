@@ -90,6 +90,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
             int codigo = datos.getCodigo();
             String desc = datos.getDescripcion();
             double precio = datos.getPrecio();
+            int idCategoria = datos.getIdCategoria();
 
             //Cursor fila = this.getWritableDatabase().rawQuery("Select codigo from articulos where codigo == " + codigo, null);
             Cursor fila = db().rawQuery("Select codigo from articulos Where codigo == " + codigo, null);
@@ -100,9 +101,9 @@ public class ConexionSQLite extends SQLiteOpenHelper {
                 //estado = (Boolean) this.getWritableDatabase().insert("datos", "nombre, correo, telefono", registro);
                 //resultado = (int) this.getWritableDatabase().insert("usuarios", "nombres, apellidos, usuario, clave, pregunta, respuesta", registro);
                 String SQL = "Insert Into articulos \n" +
-                            "(codigo, descripcion, precio) \n" +
+                            "(codigo, descripcion, precio, idCategoria) \n" +
                             "Values \n "+
-                            "('" + String.valueOf(codigo) + "', '" + desc + "', '" + String.valueOf(precio) + "');";
+                            "('" + String.valueOf(codigo) + "', '" + desc + "', '" + String.valueOf(precio) + "', '" + String.valueOf(idCategoria)  + "');";
 
                 db().execSQL(SQL);
                 db().close();
@@ -353,6 +354,33 @@ public class ConexionSQLite extends SQLiteOpenHelper {
 
         }
         return articulosList;
+    }
+
+    public ArrayList<DtoCategoria> consultaCategoria(){
+        boolean estado = false;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        DtoCategoria cat = null;
+        categoriaList = new ArrayList<DtoCategoria>();
+        try{
+            Cursor fila = db.rawQuery("select * from tb_categorias",null);
+            while (fila.moveToNext()){
+                cat = new DtoCategoria();
+                cat.setIdCategoria(fila.getInt(0));
+                cat.setNameCategoria(fila.getString(1));
+                cat.setEstadoCategoria(fila.getInt(2));
+
+                categoriaList.add(cat);
+
+                Log.i("codigo",String.valueOf(cat.getIdCategoria()));
+                Log.i("nombre categoria",cat.getNameCategoria());
+                Log.i("Estado", String.valueOf(cat.getEstadoCategoria()));
+            }
+            obtenerCategorias();
+        }catch (Exception e){
+
+        }
+        return categoriaList;
     }
 
     public ArrayList<String> obtenerListaArticulos(){
