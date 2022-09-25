@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -21,18 +22,42 @@ public class ConexionSQLite extends SQLiteOpenHelper {
     boolean estadoDelete = true;
 
     ArrayList<String>listaArticulos;
+    ArrayList<String> listaCategorias;
 
     ArrayList<Dto>articulosList;
+    ArrayList<DtoCategoria> categoriaList;
 
 
-    public ConexionSQLite(Context context) {super(context, "administracion.db", null, 1);
+    public ConexionSQLite(Context context) {super(context, "administracion.db", null, 3);
+    }
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        if (!db.isReadOnly()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                db.setForeignKeyConstraintsEnabled(true);
+            } else {
+                db.execSQL("PRAGMA foreign_keys=ON");
+            }
+        }
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create table categorias (idCategoria integer not null primary key, nameCategoria text not null, estadoCategoria integer not null, fechaRegistro datetime not null)");
-        db.execSQL("Create table articulos(codigo integer not null primary key, descripcion text, precio real, idCategoria integer, foreign key (idCategoria) References categorias (idCategoria))");
+        /*
+        Estas lineas falla pero desconozco porque,faltaria establecerles un limite al tipo de dato del campo??
+        //db.execSQL("Create table categorias(idCategoria integer not null primary key, nameCategoria text not null, estadoCategoria integer not null, fechaRegistro text not null)");
+        //db.execSQL("Create table articulos(codigo integer not null primary key, descripcion text, precio real, idCategoria integer )");
+         */
 
+        /*Definiendo la estrucutura de la base de datos*/
+        db.execSQL("create table tb_categorias (idcategoria integer(11) not null primary key, nombrecategoria varchar(50) not null, estadocategoria integer(11) not null, fecharegistro datetime not null)");
+        db.execSQL("create table articulos (codigo integer(11) not null primary key, descripcion varchar(100) not null, precio real not null, idcategoria integer(11) not null, FOREIGN KEY(idcategoria) REFERENCES tb_categorias(idcategoria))");
+
+        //Almacenamiento de 3 categorias para efectos de prueba y ejemplo.
+        db.execSQL("insert into tb_categorias values(1, 'Smartphone', 1, datetime('now','localtime')), (2, 'Tablets', 1, datetime('now','localtime')), (3, 'Computadora', 1, datetime('now','localtime')) ");
+
+        /*
         db.execSQL("insert into categoria values(1, 'Electrodomesticos', 1, datetime('now','localtime'))");
         db.execSQL("insert into categoria values(2, 'Muebles', 1, datetime('now','localtime'))");
         db.execSQL("insert into categoria values(3, 'Celulares', 1, datetime('now','localtime'))");
@@ -41,12 +66,13 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         db.execSQL("insert into categoria values(6, 'Audio', 1, datetime('now','localtime'))");
         db.execSQL("insert into categoria values(7, 'Monitores', 1, datetime('now','localtime'))");
         db.execSQL("insert into categoria values(8, 'Laptops', 1, datetime('now','localtime'))");
+        */
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists articulos");
-        db.execSQL("drop table if exists categoria");
+        db.execSQL("drop table if exists tb_categorias");
         onCreate(db);
     }
 
@@ -340,6 +366,18 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         return listaArticulos;
     }
 
+    public ArrayList<String> obtenerCategorias(){
+        listaCategorias = new ArrayList<>();
+        listaCategorias.add("Seleccione una categoria");
+
+        for(int i = 0; i < categoriaList.size(); i++){
+            listaCategorias.add(categoriaList.get(i).getIdCategoria() + " -> " +
+                    categoriaList.get(i).getNameCategoria());
+        }
+
+        return listaCategorias;
+    }
+
     public ArrayList<String> consultaListaArticulos1(){
         boolean estado = false;
 
@@ -376,7 +414,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         List<Dto> articulos = new ArrayList<>();
         if(cursor.moveToFirst()){
             do{
-                articulos.add(new Dto(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2)));
+                articulos.add(new Dto(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getInt(3)));
                 Log.e("articulo",articulos.toString() );
             }while (cursor.moveToNext());
         }

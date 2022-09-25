@@ -31,9 +31,9 @@ public class consultaRV extends AppCompatActivity {
     }
     public List<Dto> obtenerArticulos() {
         List<Dto> articulos = new ArrayList<>();
-        articulos.add(new Dto(1, "", 0));
-        articulos.add(new Dto(2, "", 0));
-        articulos.add(new Dto(3, "", 0));
+        articulos.add(new Dto(1, "", 0, 1));
+        articulos.add(new Dto(2, "", 0, 1));
+        articulos.add(new Dto(3, "", 0, 1));
         return articulos;
     }
 }

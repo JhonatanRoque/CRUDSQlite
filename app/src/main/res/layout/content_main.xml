@@ -59,6 +59,28 @@
                 android:drawableStart="@drawable/money"
                 android:layout_margin="5dp"
                 />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:drawableStart="@drawable/category"
+                android:text="Seleccione una categoria"
+                android:textSize="19dp"
+                />
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spnCategoria"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:drawSelectorOnTop="true"
+                android:spinnerMode="dropdown"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/estiloespinner"
+                android:paddingLeft="15dp"
+                android:layout_marginBottom="15dp"/>
+                />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_guardar"
 

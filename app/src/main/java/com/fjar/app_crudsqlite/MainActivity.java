@@ -32,9 +32,12 @@ import com.fjar.app_crudsqlite.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText et_codigo, et_descripcion, et_precio;
     private Button btn_guardar, btn_consultar1, btn_consultar2, btn_eliminar, btn_actualizar;
     private TextView tv_resultado;
+    private Spinner spn;
 
     boolean inputEt=false;
     boolean inputEd=false;
@@ -137,6 +141,36 @@ public class MainActivity extends AppCompatActivity {
         btn_consultar2=(Button) findViewById(R.id.btn_consultar2);
         btn_eliminar=(Button) findViewById(R.id.btn_eliminar);
         btn_actualizar=(Button) findViewById(R.id.btn_actualizar);
+        spn = (Spinner) findViewById(R.id.spnCategoria);
+
+        /*
+        ArrayAdapter<CharSequence> adaptador = new ArrayAdapter(this, android.R.layout.simple_spinner_item,
+                conexion.obtenerCategorias());
+        spn.setAdapter(adaptador);
+        */
+
+        /*
+        spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                if(position!=0){
+                    tv_cod.setText("Código: "+conexion.consultaListaArticulos().get(position-1).getCodigo());
+                    tv_descripcion.setText("Descripción: "+conexion.consultaListaArticulos().get(position-1).getDescripcion());
+                    tv_cod.setText("Precio: "+String.valueOf(conexion.consultaListaArticulos().get(position-1).getPrecio()));
+                }else{
+                    tv_cod.setText("Código: ");
+                    tv_descripcion.setText("Descripcion: ");
+                    tv_precio.setText("Precio: ");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+         */
 
         String senal = "";
         String codigo = "";
