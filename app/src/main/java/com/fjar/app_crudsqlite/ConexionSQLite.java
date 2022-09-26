@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ConexionSQLite extends SQLiteOpenHelper {
@@ -434,6 +435,36 @@ public class ConexionSQLite extends SQLiteOpenHelper {
 
         }
         return listaArticulos;
+    }
+
+    public ArrayList<String> consultaListaCategorias(){
+        boolean estado = false;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        DtoCategoria categoria = null;
+        categoriaList = new ArrayList<DtoCategoria>();
+
+        try {
+            Cursor fila = db.rawQuery("select * from tb_categorias", null);
+            while (fila.moveToNext()){
+                categoria= new DtoCategoria();
+                categoria.setIdCategoria(fila.getInt(0));
+                categoria.setNameCategoria(fila.getString(1));
+                categoria.setEstadoCategoria(fila.getInt(2));
+
+                categoriaList.add(categoria);
+            }
+
+            listaCategorias = new ArrayList<String>();
+
+            for (int i=0; i<= categoriaList.size(); i++){
+                listaCategorias.add(categoriaList.get(i).getIdCategoria()+" -> "+ categoriaList.get(i).getNameCategoria());
+            }
+        }catch (Exception e){
+
+        }
+        return listaCategorias;
     }
 
     public List<Dto> mostrarArticulos() {

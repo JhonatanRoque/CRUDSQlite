@@ -34,6 +34,9 @@
             android:name=".Recycler_View"
             android:exported="false" />
         <activity
+            android:name=".Activity_list_view_categorias"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

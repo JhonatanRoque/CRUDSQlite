@@ -22,5 +22,10 @@
         android:orderInCategory="100"
         android:title="RecyclerView"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/ListViewCat"
+        android:orderInCategory="100"
+        android:title="ListView Categorias"
+        app:showAsAction="never" />
 
 </menu>
